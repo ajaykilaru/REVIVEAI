@@ -1,40 +1,117 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ReviveAI — Agentic Revenue Recovery OS
 
-## Getting Started
+> **Turn failed payments into recovered revenue.**
 
-First, run the development server:
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-ReviveAI-8B5CF6?style=for-the-badge)](https://reviveai-fijrjjick-epics-project.vercel.app)
+[![Built with Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Razorpay](https://img.shields.io/badge/Razorpay-Test%20Mode-3395FF?style=flat-square&logo=razorpay)](https://razorpay.com/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**[Open ReviveAI →](https://reviveai-fijrjjick-epics-project.vercel.app)**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📌 Overview
 
-## Learn More
+**ReviveAI** is an AI-powered revenue recovery platform designed to help merchants recover revenue lost due to failed, abandoned, or interrupted payments.
 
-To learn more about Next.js, take a look at the following resources:
+Instead of treating every failed payment the same way, ReviveAI analyzes the transaction context, identifies the likely failure reason, determines whether the payment is recoverable, and recommends the most appropriate next action.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The system follows an agentic recovery loop:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Detect → Diagnose → Decide → Approve → Act → Measure → Audit**
 
-## Deploy on Vercel
+The goal is simple:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> **Recover more revenue while reducing unnecessary retries, customer friction, and operational overhead.**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# REVIVEAI
->>>>>>> 77a35b08fc77154c5cb62c9b4dcefa233b7df696
+---
+
+## 🎯 Problem Statement
+
+Failed payments are a major source of lost revenue for digital businesses.
+
+A payment may fail because of:
+
+- Insufficient funds
+- Expired cards
+- Bank or network issues
+- Authentication failures
+- Payment abandonment
+- Temporary payment-service degradation
+- Repeated payment failures
+
+Traditional recovery systems often rely on fixed retry schedules or generic reminders. This can lead to:
+
+- Lost revenue
+- Excessive payment retries
+- Poor customer experience
+- Unnecessary discounts
+- Manual intervention
+- Lack of visibility into recovery performance
+
+Merchants need a system that can determine **what happened, what should happen next, and whether the action actually recovered revenue.**
+
+---
+
+## 💡 Our Solution
+
+ReviveAI acts as an intelligent revenue recovery layer for merchants.
+
+For every failed transaction, the system can:
+
+1. **Detect** a failed or at-risk payment.
+2. **Diagnose** the probable reason for failure.
+3. **Evaluate** recovery eligibility.
+4. **Choose** the next-best recovery action.
+5. **Request human approval** when required.
+6. **Execute** the approved recovery action.
+7. **Measure** the resulting recovery.
+8. **Record** the complete decision and action in an audit trail.
+
+This turns payment recovery from a reactive manual process into an intelligent, measurable workflow.
+
+---
+
+# ✨ Key Features
+
+## 1. Revenue Recovery Command Center
+
+A centralized dashboard provides merchants with visibility into:
+
+- Total transactions
+- Failed payments
+- Recoverable revenue
+- Recovered revenue
+- Recovery rate
+- At-risk revenue
+- Agent activity
+- Recent recovery actions
+
+The dashboard is designed to answer one important question:
+
+> **How much revenue can we recover, and what is the agent doing about it?**
+
+---
+
+## 2. AI Failure Diagnosis
+
+ReviveAI categorizes payment failures and determines the likely reason behind each failure.
+
+Example:
+
+```text
+Transaction
+₹4,999
+Payment Failed
+
+Diagnosis:
+Insufficient Funds
+
+Recovery Potential:
+High
+
+Recommended Action:
+Send payment link + retry reminder
