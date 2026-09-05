@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Merchant {
+  id         String     @id @default(uuid())
+  name       String
+  email      String     @unique
+  createdAt  DateTime   @default(now())
+  customers  Customer[]
+  rules      RecoveryRule[]
+}
+
+model Customer {
+  id                 String     @id @default(uuid())
+  merchantId         String
+  name               String
+  email              String     @unique
+  phone              String?
+  totalSpend         Int
+  successfulPayments Int
+  failedPayments     Int
+  createdAt          DateTime   @default(now())
+
+  merchant           Merchant   @relation(fields: [merchantId], references: [id])
+  transactions       Transaction[]
+}
+
+model Transaction {
+  id             String     @id @default(uuid())
+  merchantId     String
+  customerId     String
+  amount         Int
+  currency       String
+  status         String
+  failureReason  String?
+  retryCount     Int        @default(0)
+  recoveryScore  Float?
+  recoveryStatus String?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  customer       Customer   @relation(fields: [customerId], references: [id])
+  recoveryActions RecoveryAction[]
+  auditEvents    AuditEvent[]
+}
+
+model RecoveryAction {
+  id               String     @id @default(uuid())
+  transactionId    String
+  actionType       String
+  reason           String
+  expectedRecovery Int
+  confidence       Float
+  status           String
+  approvedAt       DateTime?
+  executedAt       DateTime?
+  createdAt        DateTime   @default(now())
+
+  transaction      Transaction @relation(fields: [transactionId], references: [id])
+}
+
+model AuditEvent {
+  id            String     @id @default(uuid())
+  transactionId String
+  eventType     String
+  actor         String
+  description   String
+  metadata      String? // JSON string
+  createdAt     DateTime   @default(now())
+
+  transaction   Transaction @relation(fields: [transactionId], references: [id])
+}
+
+model RecoveryRule {
+  id              String     @id @default(uuid())
+  merchantId      String
+  maxAttempts     Int
+  minAmount       Int
+  maxDiscount     Int
+  cooldownHours   Int
+  requireApproval Boolean
+  createdAt       DateTime   @default(now())
+
+  merchant        Merchant   @relation(fields: [merchantId], references: [id])
+}
