@@ -68,7 +68,7 @@ const ParticleText = ({
   fontFamily = 'inherit',
   glow = true,
   className = '',
-  style
+  style = {}
 }) => {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
